@@ -1,11 +1,15 @@
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:partymap/Screens/dashboard/widgets/bottom_navbar.dart";
 import "package:partymap/Screens/home/home_screen.dart";
 import "package:partymap/Screens/message/message_screen.dart";
+import "package:partymap/Screens/pin/pin_screen.dart";
 import "package:partymap/Screens/profile/profile_screen.dart";
+import "package:partymap/res/colors/app_color.dart";
 import "dashboard_controller.dart";
 
-class DashboardScreen extends GetView<DashboardController> {
+class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
@@ -13,34 +17,34 @@ class DashboardScreen extends GetView<DashboardController> {
     return GetBuilder<DashboardController>(
       builder: (controller) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text("Dashboard"),
-          ),
           body: SafeArea(
             child: IndexedStack(
               index: controller.tabIndex.value,
               children: [
                 HomeScreen(),
                 MessageScreen(),
-                ProfileScreen(),
+                PinScreen(),
               ],
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            unselectedItemColor: Colors.grey,
-            selectedItemColor: Colors.pink,
-            onTap: controller.changeTabIndex,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            currentIndex: controller.tabIndex.value,
-            items: [
-              _bottomNavItems(Icons.home_rounded, "Parties"),
-              _bottomNavItems(Icons.bar_chart, "Bars"),
-              _bottomNavItems(Icons.restaurant_menu_rounded, "Restaurants"),
-              _bottomNavItems(Icons.message, "Messages"),
-              _bottomNavItems(Icons.person, "Profile"),
-            ],
+          bottomNavigationBar: BottomNavBar(
+            controller: controller,
           ),
+          // BottomNavigationBar(
+          //   items: [
+          //     _bottomNavItems(Icons.party_mode, 'partys'),
+          //     // _bottomNavItems(Icons.local_bar, 'bars'),
+          //     // _bottomNavItems(Icons.restaurant, 'restaurants'),
+          //     _bottomNavItems(Icons.message, 'messages'),
+          //     _bottomNavItems(Icons.pin_drop, 'Pin'),
+          //     _bottomNavItems(Icons.person, 'Pin'),
+          //   ],
+          //   unselectedItemColor: AppColor.grayColor,
+          //   selectedItemColor: AppColor.primaryColor,
+          //   showSelectedLabels: true,
+          //   currentIndex: controller.tabIndex.value,
+          //   onTap: controller.changeTabIndex,
+          // ),
         );
       },
     );

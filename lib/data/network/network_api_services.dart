@@ -29,8 +29,9 @@ class NetworkApiServices extends BaseApiServices {
     dynamic responseJson;
 
     try {
+      // if raw data then encode otherwise if form data then do no encode
       final response = await http
-          .post(Uri.parse(url), body: jsonEncode(data))
+          .post(Uri.parse(url), body: data)
           .timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
     } on SocketException {
@@ -48,7 +49,8 @@ class NetworkApiServices extends BaseApiServices {
         dynamic responseJson = jsonDecode(response.body);
         return responseJson;
       case 400:
-        throw InvalidUrlException('');
+        dynamic responseJson = jsonDecode(response.body);
+        return responseJson;
       default:
         throw FetchDataException(
             'Error occured while communicating with server ${response.statusCode}');
