@@ -158,10 +158,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 buttonColor: AppColor.whiteColor,
                 loading: loginController.loading.value,
                 onPress: () {
-                  if (_formKey.currentState!.validate()) {
-                    loginController.loginApi();
-                  }
-                  // Get.toNamed(RouteName.dashboardScreen);
+                  // if (_formKey.currentState!.validate()) {
+                  //   loginController.loginApi();
+                  // }
+                  Get.toNamed(RouteName.dashboardScreen);
                 },
               ),
             ),

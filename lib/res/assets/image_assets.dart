@@ -1,5 +1,6 @@
 class ImageAssets {
-  static const String partyMapLogo = 'assets/images/partyMapLogo.jpg';
+  static const String partyMapLogo = 'assets/images/partyMapLogo.png';
+  static const String partyMapLogoPink = 'assets/images/partyMapLogoPink.png';
   static const String partyIcon = 'assets/icons/partyIcon.svg';
   static const String barIcon = 'assets/icons/barIcon.svg';
   static const String restaurantIcon = 'assets/icons/restaurantIcon.svg';

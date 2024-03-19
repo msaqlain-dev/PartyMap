@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Initialize ScreenUtil package
-    ScreenUtil.init(context,
-        designSize: const Size(375, 812), minTextAdapt: true);
+    // ScreenUtil.init(context,
+    //     designSize: const Size(375, 812), minTextAdapt: true);
 
     // Initialize your custom ResponsiveSizeUtil
     ResponsiveSizeUtil.init(context);
