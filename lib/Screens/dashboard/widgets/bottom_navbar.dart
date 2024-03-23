@@ -133,36 +133,6 @@ class BottomNavBar extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: controller.navigateToMessages,
-              child: Column(
-                children: [
-                  // IconButton(
-                  //   icon: Icon(
-                  //     Icons.message,
-                  //     color: controller.tabIndex.value == 1
-                  //         ? Colors.pink
-                  //         : AppColor.whiteColor,
-                  //   ),
-                  //   onPressed: controller.navigateToMessages,
-                  // ),
-                  Icon(
-                    Icons.message,
-                    color: controller.tabIndex.value == 1
-                        ? AppColor.primaryColor
-                        : AppColor.whiteColor,
-                  ),
-                  CustomText(
-                    text: 'message',
-                    color: controller.tabIndex.value == 1
-                        ? AppColor.primaryColor
-                        : AppColor.whiteColor,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ],
-              ),
-            ),
-            GestureDetector(
               onTap: controller.navigateToPin,
               child: Column(
                 children: [
@@ -178,7 +148,6 @@ class BottomNavBar extends StatelessWidget {
                   // ),
                   Icon(
                     Icons.location_pin,
-                    // Icons.person_pin_circle_rounded,
                     color: controller.tabIndex.value == 2
                         ? AppColor.primaryColor
                         : AppColor.whiteColor,
@@ -186,6 +155,37 @@ class BottomNavBar extends StatelessWidget {
                   CustomText(
                     text: 'pin',
                     color: controller.tabIndex.value == 2
+                        ? AppColor.primaryColor
+                        : AppColor.whiteColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: controller.navigateToMessages,
+              child: Column(
+                children: [
+                  // IconButton(
+                  //   icon: Icon(
+                  //     Icons.message,
+                  //     color: controller.tabIndex.value == 1
+                  //         ? Colors.pink
+                  //         : AppColor.whiteColor,
+                  //   ),
+                  //   onPressed: controller.navigateToMessages,
+                  // ),
+
+                  Icon(
+                    Icons.message,
+                    color: controller.tabIndex.value == 1
+                        ? AppColor.primaryColor
+                        : AppColor.whiteColor,
+                  ),
+                  CustomText(
+                    text: 'message',
+                    color: controller.tabIndex.value == 1
                         ? AppColor.primaryColor
                         : AppColor.whiteColor,
                     fontSize: 14,

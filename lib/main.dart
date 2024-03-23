@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:partymap/res/getx_localization/languages.dart';
 import 'package:partymap/res/navigators/routes.dart';
 import 'package:partymap/utils/responsive_size_util.dart'; // Import your ResponsiveSizeUtil
@@ -21,6 +22,10 @@ class MyApp extends StatelessWidget {
 
     // Initialize your custom ResponsiveSizeUtil
     ResponsiveSizeUtil.init(context);
+    MapboxOptions.setAccessToken(
+        'pk.eyJ1IjoicGFydHltYXAiLCJhIjoiY2x0Nm5wNWVoMDRmNDJxcHBqYTFuczdpNCJ9.k6rBlzpj-frFkNv8dOOtlA');
+
+    MapboxStyles.DARK;
 
     return GetMaterialApp(
       title: 'Party Map',
