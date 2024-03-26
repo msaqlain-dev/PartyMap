@@ -5,6 +5,8 @@ import "package:get/get.dart";
 import "package:partymap/Screens/pin/pin_controller.dart";
 import "package:partymap/res/colors/app_color.dart";
 import "package:partymap/res/components/custom_text.dart";
+import "package:partymap/res/components/round_button.dart";
+import "package:partymap/res/navigators/routes_name.dart";
 import "package:partymap/utils/responsive_size_util.dart";
 
 class PinScreen extends GetView<PinController> {
@@ -43,11 +45,16 @@ class PinScreen extends GetView<PinController> {
           ),
         ),
         child: Center(
-          child: CustomText(
-            text: "Pin will be shown here",
-            color: AppColor.whiteColor,
+          child: RoundButton(
+            title: 'Login',
+            buttonColor: AppColor.primaryColor,
+            height: ResponsiveSizeUtil.scaleFactorHeight * 50,
+            width: ResponsiveSizeUtil.scaleFactorWidth * 100,
+            buttonRadius: 100,
+            textColor: AppColor.whiteColor,
             fontSize: ResponsiveSizeUtil.size16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
+            onPress: () => Get.toNamed(RouteName.loginScreen),
           ),
         ),
       ),

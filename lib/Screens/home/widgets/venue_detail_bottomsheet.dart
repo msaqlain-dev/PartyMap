@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:partymap/Screens/home/home_controller.dart';
 import 'package:partymap/Screens/home/widgets/venue_details.dart';
+import 'package:partymap/res/assets/image_assets.dart';
 import 'package:partymap/res/colors/app_color.dart';
 import 'package:partymap/res/components/custom_text.dart';
 import 'package:partymap/utils/responsive_size_util.dart';
@@ -40,14 +41,17 @@ class VenueDetailBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-              icon: Icon(Icons.close, color: Colors.white),
-              onPressed: () {
-                homeController.clicked.value = false; // Close the bottom sheet
-              },
-            ),
+          // Align(
+          //   alignment: Alignment.topRight,
+          //   child: IconButton(
+          //     icon: Icon(Icons.close, color: Colors.white),
+          //     onPressed: () {
+          //       homeController.clicked.value = false; // Close the bottom sheet
+          //     },
+          //   ),
+          // ),
+          SizedBox(
+            height: 20,
           ),
           // Your venue detail widgets go here. For example:
           Row(
@@ -66,7 +70,8 @@ class VenueDetailBottomSheet extends StatelessWidget {
                   Container(
                     height: 48,
                     width: 48,
-                    color: AppColor.grayColor,
+                    // color: AppColor.grayColor,
+                    child: Image.asset(ImageAssets.partyImg1),
                   ),
                   CustomText(
                     text: 'www.org.com',
@@ -90,7 +95,8 @@ class VenueDetailBottomSheet extends StatelessWidget {
                       Container(
                         height: 48,
                         width: 48,
-                        color: AppColor.grayColor,
+                        // color: AppColor.grayColor,
+                        child: Image.asset(ImageAssets.partyImg2),
                       ),
                       SizedBox(
                         width: 10,

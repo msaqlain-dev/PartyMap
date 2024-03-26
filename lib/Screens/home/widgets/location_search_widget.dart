@@ -36,8 +36,10 @@ class LocationSearchWidget extends StatelessWidget {
                             title: Text(controller.suggestions[index].name),
                             onTap: () {
                               homeController.updateCameraPosition(
-                                  controller.suggestions[index].latitude,
-                                  controller.suggestions[index].longitude);
+                                controller.suggestions[index].latitude,
+                                controller.suggestions[index].longitude,
+                                18,
+                              );
                             },
                           );
                         },

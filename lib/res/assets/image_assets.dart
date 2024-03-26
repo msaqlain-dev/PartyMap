@@ -9,4 +9,6 @@ class ImageAssets {
   static const String searchIcon = 'assets/icons/searchIcon.svg';
   static const String messageIcon = 'assets/icons/messageIcon.svg';
   static const String pinIcon = 'assets/icons/pinIcon.svg';
+  static const String partyImg1 = 'assets/images/partyimg1.png';
+  static const String partyImg2 = 'assets/images/partyimg2.png';
 }

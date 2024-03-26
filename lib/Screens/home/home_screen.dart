@@ -13,6 +13,7 @@ import "package:partymap/Screens/home/widgets/venue_details.dart";
 import "package:partymap/res/assets/image_assets.dart";
 import "package:partymap/res/colors/app_color.dart";
 import "package:partymap/res/components/custom_text.dart";
+import "package:partymap/res/navigators/routes_name.dart";
 import "package:partymap/utils/responsive_size_util.dart";
 import "home_controller.dart";
 
@@ -101,22 +102,19 @@ class HomeScreen extends StatelessWidget {
                     bottomLeft: Radius.circular(ResponsiveSizeUtil.size40),
                     bottomRight: Radius.circular(ResponsiveSizeUtil.size40),
                   ),
-                  child: Obx(
-                    () => MapWidget(
-                      key: const ValueKey("partyMap"),
-                      onMapCreated: controller.onMapCreated,
-                      cameraOptions: CameraOptions(
-                        center: Point(
-                          coordinates: Position(controller.longitude.value,
-                              controller.latitude.value),
-                        ).toJson(),
-                        zoom: controller.zoom.value,
-                        pitch: 75.0,
-                      ),
-                      styleUri: controller.mapType.value == 'Dark'
-                          ? 'mapbox://styles/partymap/clu160x05008h01qw2eal5cny'
-                          : 'mapbox://styles/partymap/cltbpygi900hm01qn6m06fzul',
+                  child: MapWidget(
+                    key: const ValueKey("partyMap"),
+                    onMapCreated: controller.onMapCreated,
+                    cameraOptions: CameraOptions(
+                      center: Point(
+                        coordinates: Position(-115.1398, 36.1699),
+                      ).toJson(),
+                      zoom: 10,
+                      pitch: 75.0,
                     ),
+                    styleUri: controller.mapType.value == 'Dark'
+                        ? 'mapbox://styles/partymap/clu160x05008h01qw2eal5cny'
+                        : 'mapbox://styles/partymap/cltbpygi900hm01qn6m06fzul',
                   ),
                 ),
                 // Positioned(
@@ -129,6 +127,20 @@ class HomeScreen extends StatelessWidget {
                 //     iconSize: ResponsiveSizeUtil.size40,
                 //   ),
                 // ),
+
+                Positioned(
+                  top: 25,
+                  left: 0,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: AppColor.whiteColor,
+                      weight: 10,
+                    ),
+                    onPressed: () => Get.toNamed(RouteName.loginScreen),
+                  ),
+                ),
+
                 // Positioned(
                 //   top: 30,
                 //   left: 10,
