@@ -112,9 +112,11 @@ class HomeScreen extends StatelessWidget {
                       zoom: 10,
                       pitch: 75.0,
                     ),
-                    styleUri: controller.mapType.value == 'Dark'
-                        ? 'mapbox://styles/partymap/clu160x05008h01qw2eal5cny'
-                        : 'mapbox://styles/partymap/cltbpygi900hm01qn6m06fzul',
+                    styleUri:
+                        "mapbox://styles/partymap/clu160x05008h01qw2eal5cny",
+                    // styleUri: controller.mapType.value == 'Dark'
+                    //     ? 'mapbox://styles/partymap/clu160x05008h01qw2eal5cny'
+                    //     : 'mapbox://styles/partymap/cltbpygi900hm01qn6m06fzul',
                   ),
                 ),
                 // Positioned(
@@ -193,15 +195,14 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 Obx(
-                  () => controller.clicked.value
+                  () => controller.selectedVenue.value != null
                       ? Positioned(
                           bottom: 0,
                           left: 0,
                           right: 0,
                           child: VenueDetailBottomSheet(
-                              venueDetails: VenueDetails(
-                                  name: 'Venue Name',
-                                  description: 'Venue Description')),
+                            venueDetails: controller.selectedVenue.value!,
+                          ),
                         )
                       : const SizedBox.shrink(),
                 ),

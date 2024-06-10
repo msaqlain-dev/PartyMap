@@ -18,6 +18,7 @@ class VenueDetailBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print(venueDetails.name);
     final List<double> data = [50, 60, 45, 80, 100, 75, 65];
     final List<String> times = [
       '4am',
@@ -28,30 +29,30 @@ class VenueDetailBottomSheet extends StatelessWidget {
       '7pm',
       '8pm',
     ];
-    final double maxBarHeight = 50.0;
+    const double maxBarHeight = 50.0;
     return Container(
       // padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.9),
+        color: Colors.black.withOpacity(0.94),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(25),
           topRight: Radius.circular(25),
+          bottomLeft: Radius.circular(25),
+          bottomRight: Radius.circular(25),
         ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Align(
-          //   alignment: Alignment.topRight,
-          //   child: IconButton(
-          //     icon: Icon(Icons.close, color: Colors.white),
-          //     onPressed: () {
-          //       homeController.clicked.value = false; // Close the bottom sheet
-          //     },
-          //   ),
-          // ),
-          SizedBox(
-            height: 20,
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              icon: Icon(Icons.close, color: Colors.white),
+              onPressed: () {
+                homeController.selectedVenue.value =
+                    null; // Close the bottom sheet
+              },
+            ),
           ),
           // Your venue detail widgets go here. For example:
           Row(
@@ -184,6 +185,9 @@ class VenueDetailBottomSheet extends StatelessWidget {
                 width: 50,
               )
             ],
+          ),
+          SizedBox(
+            height: 10,
           ),
         ],
       ),

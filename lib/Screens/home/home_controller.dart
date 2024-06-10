@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -23,15 +25,16 @@ class HomeController extends GetxController {
 
   final Rxn<VenueDetails> selectedVenue = Rxn<VenueDetails>();
 
-  RxBool clicked = false.obs;
+  // RxBool clicked = false.obs;
 
   RxString mapType = "Dark".obs;
 
+  double avgLat = 0;
+  double avgLng = 0;
+  int markerCount = 0;
+
   // Additional variable to store details for each annotation
   final Map<String, VenueDetails> annotationDetails = {};
-
-  // Adjusting to store more than just VenueDetails, but also the type.
-  // final Map<String, Tuple2<MarkerType, VenueDetails>> annotationDetails = {};
 
   // final List<VenueDetails> party = [
   //   VenueDetails(
@@ -93,7 +96,7 @@ class HomeController extends GetxController {
       );
 
       // Use easeTo for a smooth transition, applying the camera and animation options
-      mapboxMap!.easeTo(cameraOptions, animationOptions);
+      mapboxMap!.flyTo(cameraOptions, animationOptions);
     }
   }
 
@@ -371,6 +374,10 @@ class HomeController extends GetxController {
   };
 
   void updateMarkers() async {
+    avgLat = 0;
+    avgLng = 0;
+    markerCount = 0;
+
     final ByteData bytes = await rootBundle.load(ImageAssets.markerIconSmall);
     final Uint8List list = bytes.buffer.asUint8List();
 
@@ -391,6 +398,10 @@ class HomeController extends GetxController {
               'coordinates']; // Assuming typePoints[i] is directly the list [longitude, latitude]
 
           final detail = typeDetails[i];
+
+          markerCount++;
+          avgLng += coordinates[0];
+          avgLat += coordinates[1];
 
           // Prepare the annotation options
           final PointAnnotationOptions annotationOptions =
@@ -426,8 +437,11 @@ class HomeController extends GetxController {
         }
       }
     }
-
-    // Update any necessary components that depend on annotations
+    avgLat /= markerCount;
+    avgLng /= markerCount;
+    print(
+        '<=====================Latitude: $avgLat , Longitude: $avgLng =====================>');
+    updateCameraPosition(avgLat, avgLng, 16);
   }
 
   // Important (Working)
@@ -468,10 +482,10 @@ class HomeController extends GetxController {
     selectedVenue.value = details;
 
     // Show bottom sheet or update UI as necessary
-    Get.bottomSheet(
-      VenueDetailBottomSheet(venueDetails: details),
-      isScrollControlled: true,
-    );
+    // Get.bottomSheet(
+    //   VenueDetailBottomSheet(venueDetails: details),
+    //   isScrollControlled: true,
+    // );
   }
 
   // void selectVenue(VenueDetails details) {
